@@ -322,11 +322,11 @@ const NAV_ITEMS: Array<NavItem> = [
     children: [
       {
         label: "Phone Number",
-        subLabel: "+91 63977 33583",
+        subLabel: "+91 88747 95819",
       },
       {
         label: "Email Address",
-        subLabel: "support@finoma.in",
+        subLabel: "therockygroup12@gmail.com",
       },
     ],
   },

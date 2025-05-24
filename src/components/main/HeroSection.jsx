@@ -76,7 +76,7 @@ const HeroSection = () => {
           >
             <Button
               as={Link}
-              href="mailto:support@finoma.in"
+              href="mailto:therockygroup12@gmail.com"
               bgGradient="linear(to-l, #0ea5e9,#2563eb)"
               _hover={{
                 bgGradient: "linear(to-l, #0ea5e9,#2563eb)",
@@ -88,7 +88,7 @@ const HeroSection = () => {
             >
               Mail Us
             </Button>
-            <Button as={Link} href="tel:+916397733583" variant={"outline"} boxShadow={"md"}>
+            <Button as={Link} href="tel:+918874795819" variant={"outline"} boxShadow={"md"}>
               Contact Us
             </Button>
           </HStack>
