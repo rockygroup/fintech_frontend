@@ -49,8 +49,9 @@ const page = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
   const [pages, setPages] = useState([]);
-  const [updateTrnxnId, setUpdateTrnxnId] = useState<any>(null)
-  const [utr, setUtr] = useState("")
+  const [updateTrnxnId, setUpdateTrnxnId] = useState<any>(null);
+  const [utr, setUtr] = useState("");
+  const [status, setStatus] = useState("");
   const [selectedDates, setSelectedDates] = useState<Date[]>([
     new Date(new Date().setMonth(new Date().getMonth() - 1)),
     new Date(new Date().setDate(new Date().getDate() + 1)),
@@ -96,9 +97,10 @@ const page = () => {
   async function updateTransaction(id?: any) {
     try {
       setIsLoading(true);
-      await API.adminUpdateTransaction(id, utr);
-      setUpdateTrnxnId(null)
-      setUtr("")
+      await API.adminUpdateTransaction(id, utr, status);
+      setUpdateTrnxnId(null);
+      setUtr("");
+      setStatus("");
       await getData();
       setIsLoading(false);
     } catch (error) {
@@ -308,7 +310,10 @@ const page = () => {
           </Table>
         </TableContainer>
 
-        <Modal isOpen={Boolean(updateTrnxnId)} onClose={() => setUpdateTrnxnId(null)}>
+        <Modal
+          isOpen={Boolean(updateTrnxnId)}
+          onClose={() => setUpdateTrnxnId(null)}
+        >
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Update Transaction</ModalHeader>
@@ -320,6 +325,14 @@ const page = () => {
                 onChange={(e) => setUtr(e.target.value)}
                 placeholder="Enter UTR"
               />
+              <FormControl maxW={["full", "xs"]}>
+                <FormLabel>Status</FormLabel>
+                <Select name="status" onChange={(e) => setStatus(e.target.value)}>
+                  <option value="pending">Pending</option>
+                  <option value="success">Success</option>
+                  <option value="failed">Failed</option>
+                </Select>
+              </FormControl>
             </ModalBody>
             <ModalFooter>
               <HStack justifyContent={"flex-end"} spacing={4}>
