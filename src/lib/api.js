@@ -602,7 +602,7 @@ export const API = {
   // Transaction related APIs
 
   adminUpdateTransaction: async (id, utr, status = 'success') => {
-    let res = await API.execute(`/admin/transactions/payout/${id}`, "PUT", {utr: utr, staus: status});
+    let res = await API.execute(`/admin/transactions/payout/${id}`, "PUT", {utr: utr, status: status});
     return API.processResponse(res);
   },
 
