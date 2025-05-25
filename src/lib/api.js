@@ -601,8 +601,8 @@ export const API = {
 
   // Transaction related APIs
 
-  adminUpdateTransaction: async (id) => {
-    let res = await API.execute(`/admin/transactions/payout/${id}`, "PUT", {});
+  adminUpdateTransaction: async (id, utr) => {
+    let res = await API.execute(`/admin/transactions/payout/${id}`, "PUT", {utr: utr});
     return API.processResponse(res);
   },
 

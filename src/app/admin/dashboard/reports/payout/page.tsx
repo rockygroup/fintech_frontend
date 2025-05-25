@@ -13,6 +13,13 @@ import {
   Heading,
   IconButton,
   Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Select,
   Stack,
   Table,
@@ -42,6 +49,8 @@ const page = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
   const [pages, setPages] = useState([]);
+  const [updateTrnxnId, setUpdateTrnxnId] = useState<any>(null)
+  const [utr, setUtr] = useState("")
   const [selectedDates, setSelectedDates] = useState<Date[]>([
     new Date(new Date().setMonth(new Date().getMonth() - 1)),
     new Date(new Date().setDate(new Date().getDate() + 1)),
@@ -87,7 +96,9 @@ const page = () => {
   async function updateTransaction(id?: any) {
     try {
       setIsLoading(true);
-      await API.adminUpdateTransaction(id);
+      await API.adminUpdateTransaction(id, utr);
+      setUpdateTrnxnId(null)
+      setUtr("")
       await getData();
       setIsLoading(false);
     } catch (error) {
@@ -296,6 +307,33 @@ const page = () => {
             </Tbody>
           </Table>
         </TableContainer>
+
+        <Modal isOpen={Boolean(updateTrnxnId)} onClose={() => setUpdateTrnxnId(null)}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Update Transaction</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <p>Enter UTR</p>
+              <Input
+                value={utr}
+                onChange={(e) => setUtr(e.target.value)}
+                placeholder="Enter UTR"
+              />
+            </ModalBody>
+            <ModalFooter>
+              <HStack justifyContent={"flex-end"} spacing={4}>
+                <Button onClick={() => setUpdateTrnxnId(null)}>Cancel</Button>
+                <Button
+                  isLoading={isLoading}
+                  onClick={() => updateTransaction(updateTrnxnId)}
+                >
+                  Update
+                </Button>
+              </HStack>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Box>
     </>
   );
