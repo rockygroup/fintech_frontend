@@ -288,7 +288,7 @@ const page = () => {
                       }}
                     />
 
-                    {item?.status == "pending" || !item?.utr ? (
+                    {item?.status == "success" || item?.status == "failed" || item?.status == "pending" || !item?.utr ? (
                       <Tooltip label={"Update transaction"}>
                         <Button
                           aria-label="update"
