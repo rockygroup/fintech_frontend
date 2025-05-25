@@ -292,7 +292,7 @@ const page = () => {
                           aria-label="update"
                           leftIcon={<IoRefresh />}
                           isLoading={isLoading}
-                          onClick={() => updateTransaction(item?.id)}
+                          onClick={() => setUpdateTrnxnId(item?.id)}
                           size={"xs"}
                         >
                           Check Status
