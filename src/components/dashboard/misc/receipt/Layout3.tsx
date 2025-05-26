@@ -8,6 +8,7 @@ import {
   TextProps,
   VStack,
   Button,
+  Image,
 } from "@chakra-ui/react";
 import React, { FC } from "react";
 import { BiSolidError } from "react-icons/bi";
@@ -106,11 +107,12 @@ const Layout3 = ({ data, isLayout, onClose }: ReceiptLayoutProps) => {
               fontSize={isLayout ? "32" : "64"}
             />
           ) : data?.status == "pending" ? (
-            <Icon
-              as={TbClockExclamation}
-              color={"black"}
-              fontSize={isLayout ? "32" : "64"}
-            />
+            // <Icon
+            //   as={TbClockExclamation}
+            //   color={"black"}
+            //   fontSize={isLayout ? "32" : "64"}
+            // />
+            <Image src="/assets/icons/history.webp" boxSize={['16']} objectFit={'contain'} />
           ) : data?.status == "failed" ? (
             <Icon
               as={IoWarningOutline}
@@ -125,7 +127,7 @@ const Layout3 = ({ data, isLayout, onClose }: ReceiptLayoutProps) => {
               data?.status == "success"
                 ? "#71DD37"
                 : data?.status == "pending"
-                ? "orange.500"
+                ? "black"
                 : data?.status == "failed"
                 ? "red.500"
                 : "gray.700"
