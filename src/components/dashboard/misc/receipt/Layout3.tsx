@@ -127,7 +127,7 @@ const Layout3 = ({ data, isLayout, onClose }: ReceiptLayoutProps) => {
               data?.status == "success"
                 ? "#71DD37"
                 : data?.status == "pending"
-                ? "black"
+                ? "gray.900"
                 : data?.status == "failed"
                 ? "red.500"
                 : "gray.700"
