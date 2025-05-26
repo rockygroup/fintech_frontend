@@ -108,7 +108,7 @@ const Layout3 = ({ data, isLayout, onClose }: ReceiptLayoutProps) => {
           ) : data?.status == "pending" ? (
             <Icon
               as={TbClockExclamation}
-              color={"orange.500"}
+              color={"black"}
               fontSize={isLayout ? "32" : "64"}
             />
           ) : data?.status == "failed" ? (
